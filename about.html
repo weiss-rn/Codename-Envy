@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About this NCNN-inspired, privacy-first image upscaling web UI and the open-source projects behind it." />
+    <link rel="stylesheet" href="Evolve.css">
+    <title>NCNN Upscaling UI | About</title>
+</head>
+<body class="evolve">
+    <div id="inject-header"></div>
+    <main>
+        <div class="Container-evolve-desc">
+            <h1 id="central">About</h1>
+            <p>This is a lightweight, static web UI concept for image upscaling workflows inspired by the NCNN ecosystem. The goal is to keep the experience privacy-friendly (client-side when possible), simple to run, and easy to extend.</p>
+
+            <h2 class="tempest_heading2">What you can do here</h2>
+            <ul class="about_list">
+                <li>Browse algorithm presets and sample results.</li>
+                <li>Prepare an upscaling job (image + settings) in a clean UI.</li>
+                <li>Extend the project with JavaScript/TypeScript modules.</li>
+            </ul>
+
+            <h2 class="tempest_heading2">Open-source credits</h2>
+            <ul class="about_list">
+                <li><a href="https://github.com/Tencent/ncnn" target="_blank" rel="noopener noreferrer">NCNN</a></li>
+                <li><a href="https://github.com/xinntao/Real-ESRGAN" target="_blank" rel="noopener noreferrer">Real-ESRGAN</a></li>
+                <li><a href="https://github.com/bilibili/ailab/tree/main/Real-CUGAN" target="_blank" rel="noopener noreferrer">Real-CUGAN</a></li>
+                <li><a href="https://github.com/nagadomi/waifu2x" target="_blank" rel="noopener noreferrer">waifu2x</a></li>
+            </ul>
+
+            <h2 class="tempest_heading2">Notes</h2>
+            <p>If you plan to run real NCNN models in the browser (WebAssembly/WebGPU), add the runtime as a separate module and keep model files out of the repository unless you have redistribution permission.</p>
+        </div>
+    </main>
+    <div class="spacing"></div>
+    <div id="inject-footer"></div>
+    <script src="injector.js"></script>
+</body>
+</html>
