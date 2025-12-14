@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Try client-side image upscaling: upload an image, choose an algorithm preset, scale, noise reduction, and output format." />
     <link rel="stylesheet" href="Evolve.css">
+    <title>NCNN Upscaling UI | Try Upscaling</title>
 </head>
 <body class="evolve">
     <div id="inject-header"></div>
     <main>
         <h1 class="tempest_heading">Select Your Upscaling Settings</h1>
         <h2 class="tempest_desc">Choose the upscaling algorithm that best suits your needs.</h2>
-        <div class="tempest_selection">
+        <form class="tempest_selection" id="upscale_form">
             <div class="tempest_selection_header">
-                <h2 id="tempest_heading2">Select your algorithm</h2>
+                <h2 class="tempest_heading2">Select your algorithm</h2>
                 <p class="tempest_short_paragraph">Choose the algorithm you want to use for image upscaling.</p>
             </div>
             <div class="tempest_input_container">
@@ -20,11 +22,12 @@
                 <input type="text" id="tempest_input" placeholder="Enter your image URL">
                 <div class="tempest_or">or</div>
                 <input type="file" id="tempest_file_input" accept="image/*">
-                <button id="tempest_upload_button">Upload</button>
+                <button type="button" id="tempest_upload_button">Load preview</button>
+            </div>
             <div class="tempest_selection_content">
                 <div class="tempest_radio_group">
                     <label class="tempest_radio_btn">
-                        <input type="radio" name="algorithm" value="Real-ESRGAN" id="real-esrgan">
+                        <input type="radio" name="algorithm" value="Real-ESRGAN" id="real-esrgan" required>
                         <span>Real-ESRGAN</span>
                     </label>
                     <label class="tempest_radio_btn">
@@ -36,11 +39,11 @@
                         <span>Waifu2X</span>
                     </label>
                 </div>
-                <h2 id="tempest_heading2">Select Scale</h2>
+                <h2 class="tempest_heading2">Select Scale</h2>
                 <p class="tempest_short_paragraph">Choose the scale factor for the selected algorithm.</p>
                 <div class="tempest_radio_group">
                     <label class="tempest_radio_btn">
-                        <input type="radio" name="algorithm_scale" value="2x" id="2xscale">
+                        <input type="radio" name="algorithm_scale" value="2x" id="2xscale" required>
                         <span>2x</span>
                     </label>
                     <label class="tempest_radio_btn">
@@ -52,7 +55,7 @@
                         <span>6x</span>
                     </label>
                 </div>
-                <h2 id="tempest_heading2">Select Noise Reduction</h2>
+                <h2 class="tempest_heading2">Select Noise Reduction</h2>
                 <p class="tempest_short_paragraph">Choose the noise reduction level for the selected algorithm.</p>
                 <div class="tempest_radio_group">
                     <label class="tempest_radio_btn">
@@ -72,11 +75,11 @@
                         <span>High</span>
                     </label>
                 </div>
-                <h2 id="tempest_heading2">Select Output Format</h2>
+                <h2 class="tempest_heading2">Select Output Format</h2>
                 <p class="tempest_short_paragraph">Choose the output format for the upscaled image.</p>
                 <div class="tempest_radio_group">
                     <label class="tempest_radio_btn">
-                        <input type="radio" name="output_format" value="PNG" id="png">
+                        <input type="radio" name="output_format" value="PNG" id="png" required>
                         <span>PNG</span>
                     </label>
                     <label class="tempest_radio_btn">
@@ -88,11 +91,11 @@
                         <span>WebP</span>
                     </label>
                 </div>
-                <h2 id="tempest_heading2">Select Processing Type</h2>
+                <h2 class="tempest_heading2">Select Processing Type</h2>
                 <p class="tempest_short_paragraph">Choose the processing power used to upscale your image</p>
                 <div class="tempest_radio_group">
                     <label class="tempest_radio_btn">
-                        <input type="radio" name="processing_type" value="Client_side" id="Client_side">
+                        <input type="radio" name="processing_type" value="Client_side" id="Client_side" required>
                         <span>Client Side</span>
                     </label>
                     <label class="tempest_radio_btn">
@@ -101,12 +104,30 @@
                     </label>
                 </div>
                 <div class="tempest_submit">
-                    <button type="submit" id="tempest_submit">Submit</button>
+                    <button type="submit" id="tempest_submit">Upscale</button>
                 </div>
             </div>
-        </div>
+
+            <div class="upscale_status" id="upscale_status" role="status" aria-live="polite"></div>
+
+            <section class="upscale_results" id="upscale_results" hidden>
+                <div class="upscale_grid">
+                    <div class="upscale_panel">
+                        <h2 class="upscale_panel_title">Input</h2>
+                        <img id="upscale_input_preview" alt="Input preview" hidden>
+                    </div>
+                    <div class="upscale_panel">
+                        <h2 class="upscale_panel_title">Output</h2>
+                        <img id="upscale_output_preview" alt="Upscaled output preview" hidden>
+                        <a id="upscale_download" class="upscale_download" href="#" download hidden>Download</a>
+                    </div>
+                </div>
+                <p class="upscale_note">Note: this is a lightweight client-side preview scaler, not the original NCNN models.</p>
+            </section>
+        </form>
     </main>
     <div id="inject-footer"></div>
     <script src="injector.js"></script>
+    <script src="assets/upscale.js"></script>
 </body>
 </html>
