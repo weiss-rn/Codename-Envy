@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Evolve.css">
+</head>
+<body class="evolve">
+    <div id="inject-header"></div>
+    <main>
+        <div class=spacing></div>
+        <div class="tempest_selection">
+            <div class="tempest_selection_header">
+                <h2 id="tempest_heading2">Waifu2X</h2>
+                <p class="tempest_short_paragraph">Choose the algorithm  configuration you want to use for image upscaling.</p>
+            </div>
+            <div class="tempest_input_container">
+                <label for="tempest_input">Image URL:</label>
+                <input type="text" id="tempest_input" placeholder="Enter your image URL">
+                <div class="tempest_or">or</div>
+                <input type="file" id="tempest_file_input" accept="image/*">
+                <button id="tempest_upload_button">Upload</button>
+            <div class="tempest_selection_content">
+                <h2 id="tempest_heading2">Select Scale</h2>
+                <p class="tempest_short_paragraph">Choose the scale factor for the selected algorithm.</p>
+                <div class="tempest_radio_group">
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_scale" value="2x" id="2xscale">
+                        <span>2x</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_scale" value="4x" id="4xscale">
+                        <span>4x</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_scale" value="6x" id="6xscale">
+                        <span>6x</span>
+                    </label>
+                </div>
+                <h2 id="tempest_heading2">Select Noise Reduction</h2>
+                <p class="tempest_short_paragraph">Choose the noise reduction level for the selected algorithm.</p>
+                <div class="tempest_radio_group">
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_noise" value="None" id="none">
+                        <span>None</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_noise" value="Low" id="low">
+                        <span>Low</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_noise" value="Medium" id="medium">
+                        <span>Medium</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="algorithm_noise" value="High" id="high">
+                        <span>High</span>
+                    </label>
+                </div>
+                <h2 id="tempest_heading2">Select Output Format</h2>
+                <p class="tempest_short_paragraph">Choose the output format for the upscaled image.</p>
+                <div class="tempest_radio_group">
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="output_format" value="PNG" id="png">
+                        <span>PNG</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="output_format" value="JPEG" id="jpeg">
+                        <span>JPEG</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="output_format" value="WebP" id="webp">
+                        <span>WebP</span>
+                    </label>
+                </div>
+                <h2 id="tempest_heading2">Select Processing Type</h2>
+                <p class="tempest_short_paragraph">Choose the processing power used to upscale your image</p>
+                <div class="tempest_radio_group">
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="processing_type" value="Client_side" id="Client_side">
+                        <span>Client Side</span>
+                    </label>
+                    <label class="tempest_radio_btn">
+                        <input type="radio" name="processing_type" value="Server_Side" id="Server_Side">
+                        <span>Server Side</span>
+                    </label>
+                </div>
+                <div class="tempest_submit">
+                    <button type="submit" id="tempest_submit">Upscale</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="inject-footer"></div>
+    <script src="injector.js"></script>
+</body>
+</html>
